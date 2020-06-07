@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Recipients from './components/Recipients';
+import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
@@ -55,6 +56,39 @@ export default function App() {
               label: 'To:',
               action: handleRecipients,
               items: recipients,
+              isHidden: false,
+            })}
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col sm={8}>
+            {Recipients({
+              label: 'Cc:',
+              action: handleCc,
+              items: recipients,
+              isHidden: false,
+            })}
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col sm={8}>
+            {Recipients({
+              label: 'Bcc:',
+              action: handleBcc,
+              items: recipients,
+              isHidden: false,
+            })}
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col sm={8}>
+            {Content({
+              label: 'Subject:',
+              action: handleSubject,
+              text: subject,
+              placeholder: 'Enter subject line',
+              isLongText: false,
+              isHidden: false,
             })}
           </Col>
         </Row>

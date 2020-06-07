@@ -1,6 +1,4 @@
 import React from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import { RecipientsCallback } from '../App';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
@@ -9,13 +7,16 @@ export type RecipientsProps = {
   label: string;
   action: RecipientsCallback;
   items: string[];
+  isHidden: boolean;
 };
 
 export default function Recipients(props: RecipientsProps) {
   const [value, setValue] = React.useState<string>('');
   const [error, setError] = React.useState<string>('');
   const validEmail = new RegExp(/[\w\d.-]+@[\w\d.-]+\.[\w\d.-]+/g);
-
+  if (props.isHidden) {
+    return;
+  }
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (['Enter', 'Tab', ','].includes(evt.key)) {
       evt.preventDefault();
