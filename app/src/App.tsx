@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import Container from "react-bootstrap/Container";
 
 export default function App() {
   const [recipients, setRecipients] = React.useState<string[]>([]);
@@ -9,7 +10,9 @@ export default function App() {
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   return (
     <div className="App">
-      <p>Hello</p>
+      <Container className="p-3">
+        <h1>Hello</h1>
+      </Container>
     </div>
   );
 }
