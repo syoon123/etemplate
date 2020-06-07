@@ -9,30 +9,55 @@ export type RecipientsCallback = {
   (items: string[]): void;
 };
 
+export type ContentCallback = {
+  (text: string): void;
+};
+
 export default function App() {
   const [recipients, setRecipients] = React.useState<string[]>([]);
-  // const [cc, setCc] = React.useState<string[]>([]);
-  // const [bcc, setBcc] = React.useState<string[]>([]);
-  // const [content, setContent] = React.useState<string>('');
-  // const [mailToUrl, setMailToUrl] = React.useState<string>('');
+  const [cc, setCc] = React.useState<string[]>([]);
+  const [bcc, setBcc] = React.useState<string[]>([]);
+  const [subject, setSubject] = React.useState<string>('');
+  const [content, setContent] = React.useState<string>('');
+  const [mailToUrl, setMailToUrl] = React.useState<string>('');
 
   function handleRecipients(items: string[]) {
-    console.log(items);
     setRecipients(items);
   }
 
-  // function handleCc(items: string[]) {
-  //   setCc(items);
-  // }
+  function handleCc(items: string[]) {
+    setCc(items);
+  }
+
+  function handleBcc(items: string[]) {
+    setBcc(items);
+  }
+
+  function handleSubject(text: string) {
+    setSubject(text);
+  }
+
+  function handleContent(text: string) {
+    setContent(text);
+  }
 
   return (
     <div className="App">
       <Container className="p-3">
-        {Recipients({
-          label: 'To:',
-          action: handleRecipients,
-          items: recipients,
-        })}
+        <Row className="justify-content-md-center">
+          <Col sm={8}>
+            <h1 className="text-center">Email Template URL Generator</h1>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col sm={8}>
+            {Recipients({
+              label: 'To:',
+              action: handleRecipients,
+              items: recipients,
+            })}
+          </Col>
+        </Row>
       </Container>
     </div>
   );

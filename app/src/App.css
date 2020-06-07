@@ -1,39 +1,3 @@
-.wrapper {
-  background-color: white;
-  width: 400px;
-  padding: 2rem;
-  box-shadow: 0 1.5rem 1rem -1rem rgba(0, 0, 0, 0.1);
-  border-radius: 0.3rem;
-}
-
-/*.input {*/
-/*  width: 100%;*/
-/*  height: 45px;*/
-/*  padding: 0 1rem;*/
-/*  margin-top: 1rem;*/
-/*  box-sizing: border-box;*/
-/*  font: inherit;*/
-/*  border-radius: 0.2rem;*/
-/*  border: 2px solid #d4d5d6;*/
-/*  color: #565656;*/
-/*  -webkit-appearance: none;*/
-/*}*/
-
-/*.input:focus {*/
-/*  border-color: cornflowerblue;*/
-/*  outline: none;*/
-/*}*/
-
-/*.input.has-error {*/
-/*  border-color: tomato;*/
-/*}*/
-
-/*.error {*/
-/*  margin: 0;*/
-/*  font-size: 90%;*/
-/*  color: tomato;*/
-/*}*/
-
 .tag-item {
   display: inline-block;
   border-radius: 30px;

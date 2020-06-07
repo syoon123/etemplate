@@ -2,8 +2,8 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { RecipientsCallback } from '../App';
-import Form from "react-bootstrap/Form";
-import Badge from "react-bootstrap/Badge";
+import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
 
 export type RecipientsProps = {
   label: string;
@@ -79,38 +79,35 @@ export default function Recipients(props: RecipientsProps) {
   }
 
   return (
-      <Row>
-        <Col>
-          <Form.Group>
+    <Form.Group>
+      <div className="recipients-list">
+        <Form.Label>{props.label}</Form.Label>&nbsp;
+        {props.items.map((item) => (
+          <Badge pill variant="light" className="tag-item" key={item}>
+            {item}
+            <button
+              type="button"
+              className="button"
+              onClick={() => handleDelete(item)}
+            >
+              &times;
+            </button>
+          </Badge>
+        ))}
+      </div>
 
-            <div className="recipients-list">
-              <Form.Label>{props.label}</Form.Label>&nbsp;
-              {props.items.map((item) => (
-                  <Badge pill variant="light" className="tag-item" key={item}>
-                    {item}
-                    <button
-                        type="button"
-                        className="button"
-                        onClick={() => handleDelete(item)}
-                    >
-                      &times;
-                    </button>
-                  </Badge>
-              ))}
-            </div>
+      <Form.Control
+        className={'input ' + (error && ' is-invalid')}
+        value={value}
+        placeholder="Type or paste email addresses and press `Enter`..."
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+        onPaste={handlePaste}
+      />
 
-            <Form.Control
-                className={'input ' + (error && ' is-invalid')}
-                value={value}
-                placeholder="Type or paste email addresses and press `Enter`..."
-                onKeyDown={handleKeyDown}
-                onChange={handleChange}
-                onPaste={handlePaste}
-            />
-
-            {error && <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>}
-          </Form.Group>
-        </Col>
-      </Row>
+      {error && (
+        <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>
+      )}
+    </Form.Group>
   );
 }
