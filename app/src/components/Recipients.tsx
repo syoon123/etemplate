@@ -14,6 +14,7 @@ export type RecipientsProps = {
 export default function Recipients(props: RecipientsProps) {
   const [value, setValue] = React.useState<string>('');
   const [error, setError] = React.useState<string>('');
+  const validEmail = new RegExp(/[\w\d.-]+@[\w\d.-]+\.[\w\d.-]+/g);
 
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (['Enter', 'Tab', ','].includes(evt.key)) {
@@ -41,7 +42,7 @@ export default function Recipients(props: RecipientsProps) {
     evt.preventDefault();
 
     var paste = evt.clipboardData.getData('text');
-    var emails = paste.match(/[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/g);
+    var emails = paste.match(validEmail);
 
     if (emails) {
       var toBeAdded = emails.filter((email) => !isInList(email));
@@ -74,7 +75,7 @@ export default function Recipients(props: RecipientsProps) {
   }
 
   function isEmail(email: string) {
-    return /[\w\d\.-]+@[\w\d\.-]+\.[\w\d\.-]+/.test(email);
+    return validEmail.test(email);
   }
 
   return (
