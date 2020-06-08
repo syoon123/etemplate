@@ -19,7 +19,7 @@ export default function Recipients(props: RecipientsProps) {
     return;
   }
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
-    if (['Enter', 'Tab', ',', ' '].includes(evt.key)) {
+    if (['Enter', ',', ' '].includes(evt.key)) {
       evt.preventDefault();
 
       setValue(value.trim());
