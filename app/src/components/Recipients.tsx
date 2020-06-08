@@ -102,7 +102,7 @@ export default function Recipients(props: RecipientsProps) {
       <Form.Control
         className={'input ' + (error && ' is-invalid')}
         value={value}
-        placeholder="Type/paste email addresses"
+        placeholder="Type emails and press Enter"
         onKeyDown={handleKeyDown}
         onChange={handleChange}
         onPaste={handlePaste}
