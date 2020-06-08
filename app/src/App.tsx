@@ -103,16 +103,13 @@ export default function App() {
         }
       })
       .then(() => {
-        handleScrollToBottom();
+        window.scrollTo(0, document.body.scrollHeight);
       });
-  }
-
-  function handleScrollToBottom() {
-    window.scrollTo(0, document.body.scrollHeight);
   }
 
   function handleRefresh() {
     window.location.reload();
+    window.scrollTo(0, 0);
   }
 
   return (
