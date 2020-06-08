@@ -50,6 +50,10 @@ export default function App() {
     setBody(text);
   }
 
+  function handleBackToEdit() {
+    setIsEditing(true);
+  }
+
   function handleGenerateUrl() {
     let recipientsList: string = encodeURIComponent(recipients.join());
     let ccList: string = cc.join();
@@ -126,8 +130,9 @@ export default function App() {
                     {CustomButton({
                       label: 'Next',
                       action: handleGenerateUrl,
-                      class: 'btn-dark btn-block',
+                      secondary: false,
                       isHidden: !isEditing,
+                      className: '',
                     })}
                   </Col>
                 </Row>
@@ -135,11 +140,12 @@ export default function App() {
                   <Col>
                     {TemplatePreview({
                       isHidden: isEditing,
-                      subject: subject,
                       recipients: recipients,
                       cc: cc,
                       bcc: bcc,
                       body: body,
+                      mailToUrl: mailToUrl,
+                      handleBackToEdit: handleBackToEdit,
                     })}
                   </Col>
                 </Row>

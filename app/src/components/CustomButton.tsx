@@ -5,8 +5,9 @@ import Button from 'react-bootstrap/Button';
 type CustomButtonProps = {
   label: string;
   action: CustomButtonCallback;
+  className: string;
   isHidden: boolean;
-  class: string;
+  secondary: boolean;
 };
 
 export default function CustomButton(props: CustomButtonProps) {
@@ -14,7 +15,12 @@ export default function CustomButton(props: CustomButtonProps) {
     return;
   }
   return (
-    <Button className={props.class} onClick={props.action}>
+    <Button
+      variant={props.secondary ? 'secondary' : 'dark'}
+      className={props.className}
+      onClick={props.action}
+      block
+    >
       {props.label}
     </Button>
   );
