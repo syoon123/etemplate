@@ -64,15 +64,10 @@ export default function App() {
     if (subject !== '') {
       subjectString = `&subject=${encodeURIComponent(subject)}`;
     }
-<<<<<<< HEAD
-    let bodyString: string = encodeURIComponent(`&body=${body}`);
+    let bodyString: string = `&body=${encodeURIComponent(body)}`;
     setMailToUrl(
       `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
     );
-=======
-    let bodyString: string =`&body=${encodeURIComponent(body)}`;
-    setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
->>>>>>> fb54f57c73d2a3503b43c0f3be2486518f30d683
     setIsEditing(false);
   }
 
