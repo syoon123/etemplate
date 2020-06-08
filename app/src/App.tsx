@@ -3,7 +3,7 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Recipients from './components/Recipients';
 import CustomButton from './components/CustomButton';
-import Subject from './components/Subject';
+import TemplatePreview from './components/TemplatePreview';
 import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -83,10 +83,9 @@ export default function App() {
           <Col sm={8}>
             <Card>
               <Card.Body>
-                {Subject({
-                  isHidden: !isEditing,
-                  subject: subject,
-                })}
+                <h2 className="break-word mb-3">
+                  {subject ? subject : '[No Subject]'}
+                </h2>
                 {Recipients({
                   label: 'To:',
                   action: handleRecipients,
@@ -132,13 +131,13 @@ export default function App() {
                     })}
                   </Col>
                 </Row>
+                <Row>
+                  <Col>
+                    <p>{mailToUrl}</p>
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p>{mailToUrl}</p>
           </Col>
         </Row>
       </Container>

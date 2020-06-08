@@ -1,11 +1,11 @@
 import React from 'react';
 
-type SubjectProps = {
+type TemplatePreviewProps = {
   isHidden: boolean;
   subject: string;
 };
 
-export default function Subject(props: SubjectProps) {
+export default function TemplatePreview(props: TemplatePreviewProps) {
   if (props.isHidden) {
     return;
   }
