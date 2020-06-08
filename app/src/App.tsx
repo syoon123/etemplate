@@ -5,6 +5,7 @@ import Recipients from './components/Recipients';
 import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
 
 export type RecipientsCallback = {
   (items: string[]): void;
@@ -47,51 +48,53 @@ export default function App() {
       <Container className="p-3">
         <Row className="justify-content-md-center">
           <Col sm={8}>
-            <h1 className="text-center">Email Template Link Generator</h1>
+            <h1 className="text-center mb-3">Email Template Link Generator</h1>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
           <Col sm={8}>
-            {Recipients({
-              label: 'To:',
-              action: handleRecipients,
-              items: recipients,
-              existingItems: cc.concat(bcc),
-              isHidden: false,
-            })}
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col sm={8}>
-            {Recipients({
-              label: 'Cc:',
-              action: handleCc,
-              items: cc,
-              existingItems: recipients.concat(bcc),
-              isHidden: false,
-            })}
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col sm={8}>
-            {Recipients({
-              label: 'Bcc:',
-              action: handleBcc,
-              items: bcc,
-              existingItems: recipients.concat(cc),
-              isHidden: false,
-            })}
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col sm={8}>
-            {Content({
-              label: 'Subject:',
-              action: handleSubject,
-              placeholder: 'Enter subject line',
-              isLongText: false,
-              isHidden: false,
-            })}
+            <Card>
+              <Card.Body>
+                <h2 className="break-word mb-3">
+                  {subject ? subject : '[No Subject]'}
+                </h2>
+                {Recipients({
+                  label: 'To:',
+                  action: handleRecipients,
+                  items: recipients,
+                  existingItems: cc.concat(bcc),
+                  isHidden: false,
+                })}
+                {Recipients({
+                  label: 'Cc:',
+                  action: handleCc,
+                  items: cc,
+                  existingItems: recipients.concat(bcc),
+                  isHidden: false,
+                })}
+                {Recipients({
+                  label: 'Bcc:',
+                  action: handleBcc,
+                  items: bcc,
+                  existingItems: recipients.concat(cc),
+                  isHidden: false,
+                })}
+                {Content({
+                  label: 'Subject:',
+                  action: handleSubject,
+                  placeholder: 'Enter subject line',
+                  isLongText: false,
+                  isHidden: false,
+                })}
+                {Content({
+                  label: 'Body:',
+                  action: handleSubject,
+                  placeholder: 'Enter email body',
+                  isLongText: true,
+                  isHidden: false,
+                })}
+              </Card.Body>
+            </Card>
           </Col>
         </Row>
       </Container>
