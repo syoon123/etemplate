@@ -53,20 +53,19 @@ export default function App() {
     let recipientsList: string = encodeURIComponent(recipients.join());
     let ccList: string = cc.join();
     if (ccList !== '') {
-      ccList = encodeURIComponent(`cc=`.concat(ccList));
+      ccList = `cc=`.concat(encodeURIComponent(ccList));
     }
     let bccList: string = bcc.join();
     if (bccList !== '') {
-      bccList = encodeURIComponent(`&bcc=`.concat(bccList));
+      bccList = `&bcc=`.concat(encodeURIComponent(bccList));
     }
     let subjectString: string = '';
     if (subject !== '') {
-      subjectString = encodeURIComponent(`&subject=${subject}`);
+      subjectString = `&subject=${encodeURIComponent(subject)}`;
     }
-    let bodyString: string = encodeURIComponent(`&body=${body}`);
+    let bodyString: string =`&body=${encodeURIComponent(body)}`;
     setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
     setIsEditing(false);
-
   }
 
   return (
