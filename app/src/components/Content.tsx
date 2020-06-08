@@ -27,6 +27,7 @@ export default function Content(props: ContentProps) {
         rows={10}
         placeholder={props.placeholder}
         onChange={handleChange}
+        value={props.value}
       />
     );
   } else {
