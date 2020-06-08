@@ -30,28 +30,28 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
       {RecipientsPreview({
         label: 'To',
         recipients: props.recipients,
-        noRecipients: '[blank]',
+        noRecipients: '[none]',
       })}
       {RecipientsPreview({
-        label: 'cc',
-        recipients: props.recipients,
-        noRecipients: '[blank]',
+        label: 'Ccc',
+        recipients: props.cc,
+        noRecipients: '[none]',
       })}
       {RecipientsPreview({
-        label: 'bcc',
-        recipients: props.recipients,
-        noRecipients: '[blank]',
+        label: 'Bcc',
+        recipients: props.bcc,
+        noRecipients: '[none]',
       })}
       <p>{props.body ? props.body : '[No body]'}</p>
       {Content({
         label:
-          'If you want to use a custom alias, type it in here. Otherwise leave this field blank',
+          'Custom Alias (Optional)',
         placeholder: 'ex. my-special-alias',
         action: props.handleAlias,
         isLongText: false,
         value: props.alias,
         isHidden: props.isHidden,
-        helperText: props.alias,
+        helperText: props.alias ? `tinyurl.com/${props.alias}` : "tinyurl.com/y6dqpgc7",
       })}
       <Row className="justify-content-md-center">
         <Col sm={4}>
