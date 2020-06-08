@@ -73,35 +73,38 @@ export default function App() {
                   action: handleRecipients,
                   items: recipients,
                   existingItems: cc.concat(bcc),
-                  isHidden: false,
+                  isHidden: !isEditing,
+                  atLeastOneNeeded: true,
                 })}
                 {Recipients({
                   label: 'Cc:',
                   action: handleCc,
                   items: cc,
                   existingItems: recipients.concat(bcc),
-                  isHidden: false,
+                  isHidden: !isEditing,
+                  atLeastOneNeeded: false,
                 })}
                 {Recipients({
                   label: 'Bcc:',
                   action: handleBcc,
                   items: bcc,
                   existingItems: recipients.concat(cc),
-                  isHidden: false,
+                  isHidden: !isEditing,
+                  atLeastOneNeeded: false,
                 })}
                 {Content({
                   label: 'Subject:',
                   action: handleSubject,
                   placeholder: 'Type/paste subject line',
                   isLongText: false,
-                  isHidden: false,
+                  isHidden: !isEditing,
                 })}
                 {Content({
                   label: 'Body:',
                   action: handleContent,
                   placeholder: 'Type/paste email body',
                   isLongText: true,
-                  isHidden: false,
+                  isHidden: !isEditing,
                 })}
                 <Row className="justify-content-md-center">
                   <Col lg={4}>
@@ -109,7 +112,7 @@ export default function App() {
                       label: 'Generate URL',
                       action: handleGenerateUrl,
                       class: 'btn-dark btn-block',
-                      isHidden: false,
+                      isHidden: !isEditing,
                     })}
                   </Col>
                 </Row>
