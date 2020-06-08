@@ -25,7 +25,7 @@ export default function App() {
   const [cc, setCc] = React.useState<string[]>([]);
   const [bcc, setBcc] = React.useState<string[]>([]);
   const [subject, setSubject] = React.useState<string>('');
-  const [content, setContent] = React.useState<string>('');
+  const [body, setBody] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
   const [errors, setErrors] = React.useState<boolean>(true);
@@ -49,12 +49,29 @@ export default function App() {
     setSubject(text);
   }
 
-  function handleContent(text: string) {
-    setContent(text);
+  function handleBody(text: string) {
+    setBody(text);
   }
 
   function handleGenerateUrl() {
-    console.log('hey');
+    let recipientsList: string = encodeURIComponent(recipients.join());
+    let ccList: string = cc.join();
+    if (ccList !== "") {
+      ccList = encodeURIComponent(`cc=`.concat(ccList));
+    }
+    let bccList: string = bcc.join();
+    if (bccList !== "") {
+      bccList = encodeURIComponent(`&bcc=`.concat(bccList));
+    }
+    let subjectString: string = ""
+    if (subject !== "") {
+       subjectString = encodeURIComponent(`&subject=${subject}`);
+    }
+    let bodyString: string = ""
+    if (body !== "") {
+      bodyString = encodeURIComponent(`&body=${body}`);
+    }
+    setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
   }
 
   return (
@@ -102,7 +119,7 @@ export default function App() {
                 })}
                 {Content({
                   label: 'Body:',
-                  action: handleContent,
+                  action: handleBody,
                   placeholder: 'Type/paste email body',
                   isLongText: true,
                   isHidden: !isEditing,
