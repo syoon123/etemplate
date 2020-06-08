@@ -84,13 +84,13 @@ export default function App() {
   }
 
   function handleGenerateTinyUrl() {
-    let getRequest: string = `https://cors-anywhere.herokuapp.com/https://tinyurl.com/api-create.php?url=${encodeURIComponent(
+    let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
       mailToUrl
     )}`;
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
     }
-    fetch(getRequest, { headers: { Origin: 'https://tinyurl.com' } })
+    fetch(getRequest, { headers: { Origin: 'https://syoon123.github.io' } })
       .then((response: Response) => {
         return response.text();
       })
