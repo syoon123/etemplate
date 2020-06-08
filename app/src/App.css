@@ -25,7 +25,6 @@
   justify-content: center;
 }
 
-.recipients-list {
-  font-size: larger;
-  padding-bottom: 2vh;
+.input-label {
+  padding-bottom: 1vh;
 }

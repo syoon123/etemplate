@@ -47,7 +47,7 @@ export default function App() {
       <Container className="p-3">
         <Row className="justify-content-md-center">
           <Col sm={8}>
-            <h1 className="text-center">Email Template URL Generator</h1>
+            <h1 className="text-center">Email Template Link Generator</h1>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
@@ -56,6 +56,7 @@ export default function App() {
               label: 'To:',
               action: handleRecipients,
               items: recipients,
+              existingItems: cc.concat(bcc),
               isHidden: false,
             })}
           </Col>
@@ -65,7 +66,8 @@ export default function App() {
             {Recipients({
               label: 'Cc:',
               action: handleCc,
-              items: recipients,
+              items: cc,
+              existingItems: recipients.concat(bcc),
               isHidden: false,
             })}
           </Col>
@@ -75,7 +77,8 @@ export default function App() {
             {Recipients({
               label: 'Bcc:',
               action: handleBcc,
-              items: recipients,
+              items: bcc,
+              existingItems: recipients.concat(cc),
               isHidden: false,
             })}
           </Col>

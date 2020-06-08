@@ -7,6 +7,7 @@ export type RecipientsProps = {
   label: string;
   action: RecipientsCallback;
   items: string[];
+  existingItems: string[];
   isHidden: boolean;
 };
 
@@ -72,7 +73,8 @@ export default function Recipients(props: RecipientsProps) {
   }
 
   function isInList(email: string) {
-    return props.items.includes(email);
+    let emailList: string[] = props.items.concat(props.existingItems);
+    return emailList.includes(email);
   }
 
   function isEmail(email: string) {
@@ -81,7 +83,7 @@ export default function Recipients(props: RecipientsProps) {
 
   return (
     <Form.Group>
-      <div className="recipients-list">
+      <div className="input-label">
         <Form.Label>{props.label}</Form.Label>&nbsp;
         {props.items.map((item) => (
           <Badge pill variant="light" className="tag-item" key={item}>

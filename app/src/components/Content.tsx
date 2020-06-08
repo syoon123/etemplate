@@ -41,7 +41,7 @@ export default function Content(props: ContentProps) {
 
   return (
     <Form.Group>
-      <Form.Label>{props.label}</Form.Label>&nbsp;
+      <Form.Label className="input-label">{props.label}</Form.Label>&nbsp;
       {formControl}
     </Form.Group>
   );
