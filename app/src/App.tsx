@@ -3,6 +3,7 @@ import './App.css';
 import Container from 'react-bootstrap/Container';
 import Recipients from './components/Recipients';
 import CustomButton from './components/CustomButton';
+import Subject from './components/Subject';
 import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -64,9 +65,10 @@ export default function App() {
       subjectString = encodeURIComponent(`&subject=${subject}`);
     }
     let bodyString: string = encodeURIComponent(`&body=${body}`);
-    setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
+    setMailToUrl(
+      `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
+    );
     setIsEditing(false);
-
   }
 
   return (
@@ -81,9 +83,10 @@ export default function App() {
           <Col sm={8}>
             <Card>
               <Card.Body>
-                <h2 className="break-word mb-3">
-                  {subject ? subject : '[No Subject]'}
-                </h2>
+                {Subject({
+                  isHidden: !isEditing,
+                  subject: subject,
+                })}
                 {Recipients({
                   label: 'To:',
                   action: handleRecipients,
