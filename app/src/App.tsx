@@ -89,6 +89,7 @@ export default function App() {
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
     }
+    window.scrollTo(0, document.body.scrollHeight);
     fetch(getRequest, { headers: { Origin: 'https://tinyurl.com' } })
       .then((response: Response) => {
         return response.text();
