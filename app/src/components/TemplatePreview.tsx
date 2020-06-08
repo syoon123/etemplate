@@ -51,7 +51,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         isLongText: false,
         value: props.alias,
         isHidden: props.isHidden,
-        helperText: props.alias ? `tinyurl.com/${props.alias}` : "tinyurl.com/y6dqpgc7",
+        helperText: props.alias ? `tinyurl.com/${props.alias}` : "",
       })}
       <Row className="justify-content-md-center">
         <Col sm={4}>
