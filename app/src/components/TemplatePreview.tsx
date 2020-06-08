@@ -24,7 +24,6 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
   if (props.isHidden) {
     return;
   }
-
   return (
     <>
       {RecipientsPreview({
@@ -51,7 +50,6 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         action: props.handleAlias,
         isLongText: false,
         value: props.alias,
-        isHidden: props.isHidden,
         helperText: props.alias ? `tinyurl.com/${props.alias}` : '',
         errorMessage: props.aliasValid
           ? ''

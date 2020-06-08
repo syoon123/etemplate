@@ -31,6 +31,7 @@ export default function App() {
   const [alias, setAlias] = React.useState<string>('');
   const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
+  const [isCopied, setIsCopied] = React.useState<boolean>(false);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
@@ -94,6 +95,7 @@ export default function App() {
         return response.text();
       })
       .then((response: string) => {
+        setIsCopied(false);
         if (response === 'Error') {
           setAliasValid(false);
           setTinyUrl('');
@@ -105,6 +107,11 @@ export default function App() {
       .then(() => {
         window.scrollTo(0, document.body.scrollHeight);
       });
+  }
+
+  function handleCopyToClipboard() {
+    navigator.clipboard.writeText(tinyUrl);
+    setIsCopied(true);
   }
 
   function handleRefresh() {
@@ -157,7 +164,9 @@ export default function App() {
                 {GeneratedUrl({
                   tinyUrl: tinyUrl,
                   isHidden: isEditing || !tinyUrl,
+                  isCopied: isCopied,
                   handleRefresh: handleRefresh,
+                  handleCopyToClipboard: handleCopyToClipboard,
                 })}
               </Card.Body>
             </Card>

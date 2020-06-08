@@ -7,10 +7,10 @@ type ContentProps = {
   placeholder: string;
   action: ContentCallback;
   isLongText: boolean;
-  isHidden: boolean;
   value: string;
-  helperText: string;
-  errorMessage: string;
+  isHidden?: boolean;
+  helperText?: string;
+  errorMessage?: string;
 };
 
 export default function Content(props: ContentProps) {
