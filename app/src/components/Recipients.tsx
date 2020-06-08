@@ -107,6 +107,9 @@ export default function Recipients(props: RecipientsProps) {
         onChange={handleChange}
         onPaste={handlePaste}
       />
+      <Form.Text className="text-muted">
+        Press enter, space, tab, or comma to add to recipients list.
+      </Form.Text>
 
       {error && (
         <Form.Control.Feedback type="invalid">{error}</Form.Control.Feedback>

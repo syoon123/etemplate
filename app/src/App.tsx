@@ -28,21 +28,17 @@ export default function App() {
   const [body, setBody] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
-  const [errors, setErrors] = React.useState<boolean>(true);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleCc(items: string[]) {
     setCc(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleBcc(items: string[]) {
     setBcc(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleSubject(text: string) {
@@ -56,19 +52,21 @@ export default function App() {
   function handleGenerateUrl() {
     let recipientsList: string = encodeURIComponent(recipients.join());
     let ccList: string = cc.join();
-    if (ccList !== "") {
+    if (ccList !== '') {
       ccList = encodeURIComponent(`cc=`.concat(ccList));
     }
     let bccList: string = bcc.join();
-    if (bccList !== "") {
+    if (bccList !== '') {
       bccList = encodeURIComponent(`&bcc=`.concat(bccList));
     }
-    let subjectString: string = ""
-    if (subject !== "") {
-       subjectString = encodeURIComponent(`&subject=${subject}`);
+    let subjectString: string = '';
+    if (subject !== '') {
+      subjectString = encodeURIComponent(`&subject=${subject}`);
     }
     let bodyString: string = encodeURIComponent(`&body=${body}`);
     setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
+    setIsEditing(false);
+
   }
 
   return (
@@ -128,12 +126,16 @@ export default function App() {
                       action: handleGenerateUrl,
                       class: 'btn-dark btn-block',
                       isHidden: !isEditing,
-                      isDisabled: errors,
                     })}
                   </Col>
                 </Row>
               </Card.Body>
             </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p>{mailToUrl}</p>
           </Col>
         </Row>
       </Container>
