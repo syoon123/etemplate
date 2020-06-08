@@ -127,34 +127,27 @@ export default function App() {
         <Row className="justify-content-md-center mb-0">
           <Col lg={8}>
             <p className="text-center mb-0">
-              Inspired by Maasai Godwin's{' '}
-              <a
-                href="https://tinyurl.com/emailforfloyd"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                tinyurl.com/emailforfloyd
-              </a>
-              ,{' '}
+              Thanks to resources like{' '}
               <a
                 href="https://defund12.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 defund12.org
-              </a>
-              , and{' '}
+              </a>{' '}
+              and{' '}
               <a
                 href="https://sayitagain.carrd.co/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                other examples
-              </a>{' '}
-              of activists using technology to allow people to contact
-              institutions and government officials at the click of a link,
-              we've built a tool to make this kind of email templating as simple
-              as possible!
+                Emails for Justice
+              </a>
+              , making one's voice heard has never been easier — by clicking a
+              link, one can contact institution leaders and government officials
+              in a matter of seconds. Inspired by these activists' powerful use
+              of technology, we've built a tool to make this kind of email
+              templating as simple and accessible as possible.
             </p>
           </Col>
         </Row>
