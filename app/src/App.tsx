@@ -89,7 +89,6 @@ export default function App() {
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
     }
-    window.scrollTo(0, document.body.scrollHeight);
     fetch(getRequest, { headers: { Origin: 'https://tinyurl.com' } })
       .then((response: Response) => {
         return response.text();
@@ -102,7 +101,14 @@ export default function App() {
           setAliasValid(true);
           setTinyUrl(response);
         }
+      })
+      .then(() => {
+        handleScrollToBottom();
       });
+  }
+
+  function handleScrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
   }
 
   function handleRefresh() {
