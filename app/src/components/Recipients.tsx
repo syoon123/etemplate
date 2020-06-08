@@ -86,7 +86,7 @@ export default function Recipients(props: RecipientsProps) {
       <div className="input-label">
         <Form.Label>{props.label}</Form.Label>&nbsp;
         {props.items.map((item) => (
-          <Badge pill variant="light" className="tag-item" key={item}>
+          <Badge pill variant="primary" className="tag-item" key={item}>
             {item}
             <button
               type="button"

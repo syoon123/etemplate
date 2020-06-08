@@ -1,5 +1,6 @@
 .tag-item {
   display: inline-block;
+  font-size: small;
   border-radius: 30px;
   height: 30px;
   padding: 0 4px 0 1rem;
@@ -31,4 +32,8 @@
 
 .break-word {
   word-wrap: break-word;
+}
+
+.preview-body {
+  white-space: pre-wrap;
 }

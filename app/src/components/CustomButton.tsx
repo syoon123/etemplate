@@ -16,7 +16,7 @@ export default function CustomButton(props: CustomButtonProps) {
   }
   return (
     <Button
-      variant={props.secondary ? 'secondary' : 'dark'}
+      variant={props.secondary ? 'secondary' : 'primary'}
       className={props.className}
       onClick={props.action}
       block

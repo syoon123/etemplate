@@ -27,6 +27,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
 
   return (
     <>
+      <hr/>
       {RecipientsPreview({
         label: 'To',
         recipients: props.recipients,
@@ -42,7 +43,9 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         recipients: props.bcc,
         noRecipients: '[none]',
       })}
-      <p>{props.body ? props.body : '[No body]'}</p>
+      <hr/>
+      <p className="preview-body">{props.body ? props.body : '[No body]'}</p>
+      <hr/>
       {Content({
         label:
           'Custom Alias (Optional)',
