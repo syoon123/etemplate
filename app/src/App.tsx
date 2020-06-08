@@ -88,7 +88,6 @@ export default function App() {
             {Content({
               label: 'Subject:',
               action: handleSubject,
-              text: subject,
               placeholder: 'Enter subject line',
               isLongText: false,
               isHidden: false,

@@ -1,13 +1,11 @@
 import React from 'react';
 import { ContentCallback } from '../App';
 import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
 
 type ContentProps = {
   label: string;
   placeholder: string;
   action: ContentCallback;
-  text: string;
   isLongText: boolean;
   isHidden: boolean;
 };
@@ -24,7 +22,7 @@ export default function Content(props: ContentProps) {
     formControl = (
       <Form.Control
         as="textarea"
-        rows={3}
+        rows={10}
         placeholder={props.placeholder}
         onChange={handleChange}
       />
