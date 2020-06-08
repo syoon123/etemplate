@@ -28,17 +28,21 @@ export default function App() {
   const [content, setContent] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
+  const [errors, setErrors] = React.useState<boolean>(true);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
+    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleCc(items: string[]) {
     setCc(items);
+    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleBcc(items: string[]) {
     setBcc(items);
+    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleSubject(text: string) {
@@ -110,6 +114,7 @@ export default function App() {
                       action: handleGenerateUrl,
                       class: 'btn-dark btn-block',
                       isHidden: !isEditing,
+                      isDisabled: errors,
                     })}
                   </Col>
                 </Row>
