@@ -52,7 +52,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
       {Content({
         label: 'Subject:',
         action: props.handleSubject,
-        placeholder: 'Type/paste subject line',
+        placeholder: 'Type or paste subject line',
         value: props.subject,
         isLongText: false,
         isHidden: props.isHidden,
@@ -61,7 +61,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
       {Content({
         label: 'Body:',
         action: props.handleBody,
-        placeholder: 'Type/paste email body',
+        placeholder: 'Type or paste email body',
         isLongText: true,
         value: props.body,
         isHidden: props.isHidden,

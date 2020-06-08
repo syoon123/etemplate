@@ -27,7 +27,6 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
 
   return (
     <>
-      <hr/>
       {RecipientsPreview({
         label: 'To',
         recipients: props.recipients,
@@ -48,7 +47,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
       <hr/>
       {Content({
         label:
-          'Custom Alias (Optional)',
+          'Custom TinyURL Alias (Optional)',
         placeholder: 'ex. my-special-alias',
         action: props.handleAlias,
         isLongText: false,

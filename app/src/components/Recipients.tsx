@@ -102,13 +102,13 @@ export default function Recipients(props: RecipientsProps) {
       <Form.Control
         className={'input ' + (error && ' is-invalid')}
         value={value}
-        placeholder="Type/paste email addresses"
+        placeholder="Type or paste email addresses"
         onKeyDown={handleKeyDown}
         onChange={handleChange}
         onPaste={handlePaste}
       />
       <Form.Text className="text-muted">
-        Press enter, space, or comma to add to recipients list.
+        Press ENTER, SPACE, or COMMA to add to recipients list.
       </Form.Text>
 
       {error && (

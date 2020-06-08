@@ -112,7 +112,7 @@ export default function App() {
           <Col sm={8}>
             <Card>
               <Card.Body>
-                <h2 className="break-word mb-3">
+                <h2 className="break-word mb-4">
                   {subject ? subject : '[No Subject]'}
                 </h2>
                 {TemplateEdit({
