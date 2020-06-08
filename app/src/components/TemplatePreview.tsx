@@ -16,12 +16,11 @@ type TemplatePreviewProps = {
   alias: string;
   aliasValid: boolean;
   handleBackToEdit: CustomButtonCallback;
+  handleGenerateTinyUrl: CustomButtonCallback;
   handleAlias: ContentCallback;
 };
 
 export default function TemplatePreview(props: TemplatePreviewProps) {
-  const [urlHidden, setUrlHidden] = React.useState<boolean>(true);
-
   if (props.isHidden) {
     return;
   }
@@ -54,14 +53,15 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         value: props.alias,
         isHidden: props.isHidden,
         helperText: props.alias ? `tinyurl.com/${props.alias}` : '',
-        errorMessage: 'asdf',
+        errorMessage: props.aliasValid
+          ? ''
+          : 'Invalid or unavailable alias. Please try again.',
       })}
       <Row className="justify-content-md-center">
         <Col sm={4}>
           {CustomButton({
             label: 'Back to Edit',
-            secondary: true,
-            isHidden: props.isHidden,
+            variant: 'secondary',
             className: 'mb-2',
             action: props.handleBackToEdit,
           })}
@@ -69,17 +69,9 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         <Col sm={4}>
           {CustomButton({
             label: 'Make URL',
-            secondary: false,
-            isHidden: props.isHidden,
-            className: '',
-            action: () => setUrlHidden(!urlHidden),
+            variant: 'primary',
+            action: props.handleGenerateTinyUrl,
           })}
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center"></Row>
-      <Row>
-        <Col>
-          <p className="mt-2">{urlHidden ? '' : 'hey'}</p>
         </Col>
       </Row>
     </>

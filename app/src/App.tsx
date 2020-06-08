@@ -1,11 +1,9 @@
 import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
-import Recipients from './components/Recipients';
-import CustomButton from './components/CustomButton';
 import TemplatePreview from './components/TemplatePreview';
 import TemplateEdit from './components/TemplateEdit';
-import Content from './components/Content';
+import GeneratedUrl from './components/GeneratedUrl';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
@@ -61,7 +59,7 @@ export default function App() {
   }
 
   function handleAlias(text: string) {
-    setAlias(text);
+    setAlias(text.trim());
   }
 
   function handleGenerateUrl() {
@@ -96,9 +94,19 @@ export default function App() {
       .then((response: Response) => {
         return response.text();
       })
-      .then((response: String) => {
-        console.log(response);
+      .then((response: string) => {
+        if (response === 'Error') {
+          setAliasValid(false);
+          setTinyUrl('');
+        } else {
+          setAliasValid(true);
+          setTinyUrl(response);
+        }
       });
+  }
+
+  function handleRefresh() {
+    window.location.reload();
   }
 
   return (
@@ -140,7 +148,13 @@ export default function App() {
                   alias: alias,
                   aliasValid: aliasValid,
                   handleBackToEdit: handleBackToEdit,
+                  handleGenerateTinyUrl: handleGenerateTinyUrl,
                   handleAlias: handleAlias,
+                })}
+                {GeneratedUrl({
+                  tinyUrl: tinyUrl,
+                  isHidden: isEditing || !tinyUrl,
+                  handleRefresh: handleRefresh,
                 })}
               </Card.Body>
             </Card>

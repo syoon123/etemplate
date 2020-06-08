@@ -5,9 +5,10 @@ import Button from 'react-bootstrap/Button';
 type CustomButtonProps = {
   label: string;
   action: CustomButtonCallback;
-  className: string;
-  isHidden: boolean;
-  secondary: boolean;
+  variant: 'primary' | 'secondary' | 'danger' | 'link';
+  className?: string;
+  size?: 'sm' | 'lg';
+  isHidden?: boolean;
 };
 
 export default function CustomButton(props: CustomButtonProps) {
@@ -16,9 +17,10 @@ export default function CustomButton(props: CustomButtonProps) {
   }
   return (
     <Button
-      variant={props.secondary ? 'secondary' : 'primary'}
+      variant={props.variant}
       className={props.className}
       onClick={props.action}
+      size={props.size}
       block
     >
       {props.label}

@@ -74,9 +74,8 @@ export default function TemplateEdit(props: TemplateEditProps) {
           {CustomButton({
             label: 'Next',
             action: props.handleGenerateUrl,
-            secondary: false,
+            variant: 'primary',
             isHidden: props.isHidden,
-            className: '',
           })}
         </Col>
       </Row>
