@@ -128,12 +128,14 @@ export default function App() {
           <Col lg={8}>
             <p className="text-center mb-0">
               Inspired by Maasai Godwin's{' '}
-              <a href="tinyurl.com/emailforfloyd">tinyurl.com/emailforfloyd</a>
+              <a href="https://tinyurl.com/emailforfloyd">
+                tinyurl.com/emailforfloyd
+              </a>
               ,&nbsp;
-              <a href="defund12.org">defund12.org</a>, and other examples of
-              activists using technology to allow people to contact government
-              officials at the click of a link, we've built a tool to make this
-              kind of templating as simple as possible!
+              <a href="https://defund12.org">defund12.org</a>, and other
+              examples of activists using technology to allow people to contact
+              government officials at the click of a link, we've built a tool to
+              make this kind of templating as simple as possible!
             </p>
           </Col>
         </Row>
