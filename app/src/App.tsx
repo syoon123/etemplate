@@ -83,13 +83,13 @@ export default function App() {
   }
 
   function handleGenerateTinyUrl() {
-    let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
+    let getRequest: string = `https://cors-anywhere.herokuapp.com/https://tinyurl.com/api-create.php?url=${encodeURIComponent(
       mailToUrl
     )}`;
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
     }
-    fetch(getRequest)
+    fetch(getRequest, { headers: { Origin: 'https://tinyurl.com' } })
       .then((response: Response) => {
         return response.text();
       })
