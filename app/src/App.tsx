@@ -31,7 +31,6 @@ export default function App() {
   const [alias, setAlias] = React.useState<string>('');
   const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
-  const [isCopied, setIsCopied] = React.useState<boolean>(false);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
@@ -95,7 +94,6 @@ export default function App() {
         return response.text();
       })
       .then((response: string) => {
-        setIsCopied(false);
         if (response === 'Error') {
           setAliasValid(false);
           setTinyUrl('');
@@ -111,7 +109,6 @@ export default function App() {
 
   function handleCopyToClipboard() {
     navigator.clipboard.writeText(tinyUrl);
-    setIsCopied(true);
   }
 
   function handleRefresh() {
@@ -125,6 +122,26 @@ export default function App() {
         <Row className="justify-content-md-center">
           <Col lg={8}>
             <h1 className="text-center mb-3">eTemplate</h1>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center mb-0">
+          <Col lg={8}>
+            <p className="text-center mb-0">
+              Inspired by Maasai Godwin's{' '}
+              <a href="tinyurl.com/emailforfloyd">tinyurl.com/emailforfloyd</a>
+              ,&nbsp;
+              <a href="defund12.org">defund12.org</a>, and other examples of
+              activists using technology to allow people to contact government
+              officials at the click of a link, we've built a tool to make this
+              kind of templating as simple as possible!
+            </p>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center">
+          <Col lg={8}>
+            <p className="text-center mb-3">
+              <small>&mdash; Sarah and Stephanie Yoon</small>
+            </p>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
@@ -164,7 +181,6 @@ export default function App() {
                 {GeneratedUrl({
                   tinyUrl: tinyUrl,
                   isHidden: isEditing || !tinyUrl,
-                  isCopied: isCopied,
                   handleRefresh: handleRefresh,
                   handleCopyToClipboard: handleCopyToClipboard,
                 })}

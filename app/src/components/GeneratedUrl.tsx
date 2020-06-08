@@ -7,7 +7,6 @@ import Col from 'react-bootstrap/Col';
 type GeneratedUrlProps = {
   isHidden: boolean;
   tinyUrl: string;
-  isCopied: boolean;
   handleRefresh: CustomButtonCallback;
   handleCopyToClipboard: CustomButtonCallback;
 };
@@ -32,7 +31,7 @@ export default function GeneratedUrl(props: GeneratedUrlProps) {
       <Row className="justify-content-md-center mt-0 mb-3">
         <Col md={4}>
           {CustomButton({
-            label: props.isCopied ? 'Copied!' : 'Copy to Clipboard',
+            label: 'Copy to Clipboard',
             variant: 'link',
             className: '',
             size: 'sm',
