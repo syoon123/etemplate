@@ -8,6 +8,7 @@ type ContentProps = {
   action: ContentCallback;
   isLongText: boolean;
   isHidden: boolean;
+  helperText: string;
 };
 
 export default function Content(props: ContentProps) {
@@ -36,11 +37,17 @@ export default function Content(props: ContentProps) {
       />
     );
   }
-
+  let formText: any;
+  if (props.helperText) {
+    formText = <Form.Text className="text-muted">{props.helperText}</Form.Text>;
+  } else {
+    formText = null;
+  }
   return (
     <Form.Group>
       <Form.Label className="input-label">{props.label}</Form.Label>&nbsp;
       {formControl}
+      {formText}
     </Form.Group>
   );
 }

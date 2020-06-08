@@ -58,6 +58,10 @@ export default function App() {
     setIsEditing(true);
   }
 
+  function handleAlias(text: string) {
+    setAlias(text);
+  }
+
   function handleGenerateUrl() {
     let recipientsList: string = encodeURIComponent(recipients.join());
     let ccList: string = cc.join();
@@ -80,17 +84,19 @@ export default function App() {
   }
 
   function handleGenerateTinyUrl() {
-    let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(mailToUrl)}`;
+    let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
+      mailToUrl
+    )}`;
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
     }
     fetch(getRequest)
-        .then((response: Response) => {
-          return response.text();
-        })
-        .then((response: String) => {
-          console.log(response);
-        });
+      .then((response: Response) => {
+        return response.text();
+      })
+      .then((response: String) => {
+        console.log(response);
+      });
   }
 
   return (
@@ -135,6 +141,7 @@ export default function App() {
                   placeholder: 'Type/paste subject line',
                   isLongText: false,
                   isHidden: !isEditing,
+                  helperText: '',
                 })}
                 {Content({
                   label: 'Body:',
@@ -142,6 +149,7 @@ export default function App() {
                   placeholder: 'Type/paste email body',
                   isLongText: true,
                   isHidden: !isEditing,
+                  helperText: '',
                 })}
                 <Row className="justify-content-md-center">
                   <Col lg={4}>
@@ -163,7 +171,9 @@ export default function App() {
                       bcc: bcc,
                       body: body,
                       mailToUrl: mailToUrl,
-                      handleBackToEdit: handleGenerateTinyUrl,
+                      alias: alias,
+                      handleBackToEdit: handleBackToEdit,
+                      handleAlias: handleAlias,
                     })}
                   </Col>
                 </Row>

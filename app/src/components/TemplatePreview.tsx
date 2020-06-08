@@ -3,7 +3,8 @@ import RecipientsPreview from './RecipientsPreview';
 import CustomButton from './CustomButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { CustomButtonCallback } from '../App';
+import Content from './Content';
+import { CustomButtonCallback, ContentCallback } from '../App';
 
 type TemplatePreviewProps = {
   isHidden: boolean;
@@ -12,7 +13,9 @@ type TemplatePreviewProps = {
   bcc: string[];
   body: string;
   mailToUrl: string;
+  alias: string;
   handleBackToEdit: CustomButtonCallback;
+  handleAlias: ContentCallback;
 };
 
 export default function TemplatePreview(props: TemplatePreviewProps) {
@@ -29,7 +32,26 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         recipients: props.recipients,
         noRecipients: '[blank]',
       })}
+      {RecipientsPreview({
+        label: 'cc',
+        recipients: props.recipients,
+        noRecipients: '[blank]',
+      })}
+      {RecipientsPreview({
+        label: 'bcc',
+        recipients: props.recipients,
+        noRecipients: '[blank]',
+      })}
       <p>{props.body ? props.body : '[No body]'}</p>
+      {Content({
+        label:
+          'If you want to use a custom alias, type it in here. Otherwise leave this field blank',
+        placeholder: 'ex. my-special-alias',
+        action: props.handleAlias,
+        isLongText: false,
+        isHidden: props.isHidden,
+        helperText: props.alias,
+      })}
       <Row className="justify-content-md-center">
         <Col sm={4}>
           {CustomButton({
