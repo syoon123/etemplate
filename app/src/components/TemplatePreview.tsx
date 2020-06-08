@@ -1,17 +1,28 @@
 import React from 'react';
+import RecipientsPreview from './RecipientsPreview';
 
 type TemplatePreviewProps = {
   isHidden: boolean;
   subject: string;
+  recipients: string[];
+  cc: string[];
+  bcc: string[];
+  body: string;
 };
 
 export default function TemplatePreview(props: TemplatePreviewProps) {
   if (props.isHidden) {
     return;
   }
+
   return (
-    <h2 className="break-word mb-3">
-      {props.subject ? props.subject : '[No Subject]'}
-    </h2>
+    <>
+      {RecipientsPreview({
+        label: 'To',
+        recipients: props.recipients,
+        noRecipients: '[blank]',
+      })}
+      <p>{props.body ? props.body : '[No body]'}</p>
+    </>
   );
 }

@@ -124,7 +124,7 @@ export default function App() {
                 <Row className="justify-content-md-center">
                   <Col lg={4}>
                     {CustomButton({
-                      label: 'Generate URL',
+                      label: 'Next',
                       action: handleGenerateUrl,
                       class: 'btn-dark btn-block',
                       isHidden: !isEditing,
@@ -133,7 +133,14 @@ export default function App() {
                 </Row>
                 <Row>
                   <Col>
-                    <p>{mailToUrl}</p>
+                    {TemplatePreview({
+                      isHidden: isEditing,
+                      subject: subject,
+                      recipients: recipients,
+                      cc: cc,
+                      bcc: bcc,
+                      body: body,
+                    })}
                   </Col>
                 </Row>
               </Card.Body>
