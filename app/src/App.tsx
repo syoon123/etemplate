@@ -31,6 +31,7 @@ export default function App() {
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
   const [alias, setAlias] = React.useState<string>('');
+  const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
   const [linkCopied, setLinkCopied] = React.useState<boolean>(false);
 
@@ -137,6 +138,7 @@ export default function App() {
                   body: body,
                   mailToUrl: mailToUrl,
                   alias: alias,
+                  aliasValid: aliasValid,
                   handleBackToEdit: handleBackToEdit,
                   handleAlias: handleAlias,
                 })}

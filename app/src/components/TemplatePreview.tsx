@@ -14,6 +14,7 @@ type TemplatePreviewProps = {
   body: string;
   mailToUrl: string;
   alias: string;
+  aliasValid: boolean;
   handleBackToEdit: CustomButtonCallback;
   handleAlias: ContentCallback;
 };
@@ -42,18 +43,18 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         recipients: props.bcc,
         noRecipients: '[none]',
       })}
-      <hr/>
+      <hr />
       <p className="preview-body">{props.body ? props.body : '[No body]'}</p>
-      <hr/>
+      <hr />
       {Content({
-        label:
-          'Custom TinyURL Alias (Optional)',
+        label: 'Custom TinyURL Alias (Optional)',
         placeholder: 'ex. my-special-alias',
         action: props.handleAlias,
         isLongText: false,
         value: props.alias,
         isHidden: props.isHidden,
-        helperText: props.alias ? `tinyurl.com/${props.alias}` : "",
+        helperText: props.alias ? `tinyurl.com/${props.alias}` : '',
+        errorMessage: 'asdf',
       })}
       <Row className="justify-content-md-center">
         <Col sm={4}>

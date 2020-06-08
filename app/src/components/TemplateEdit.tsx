@@ -57,6 +57,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
         isLongText: false,
         isHidden: props.isHidden,
         helperText: '',
+        errorMessage: '',
       })}
       {Content({
         label: 'Body:',
@@ -66,6 +67,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
         value: props.body,
         isHidden: props.isHidden,
         helperText: '',
+        errorMessage: '',
       })}
       <Row className="justify-content-md-center">
         <Col lg={4}>
