@@ -29,6 +29,9 @@ export default function App() {
   const [body, setBody] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
+  const [alias, setAlias] = React.useState<string>('');
+  const [tinyUrl, setTinyUrl] = React.useState<string>('');
+  const [linkCopied, setLinkCopied] = React.useState<boolean>(false);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
@@ -51,6 +54,7 @@ export default function App() {
   }
 
   function handleBackToEdit() {
+    setTinyUrl('');
     setIsEditing(true);
   }
 
@@ -73,6 +77,20 @@ export default function App() {
       `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
     );
     setIsEditing(false);
+  }
+
+  function handleGenerateTinyUrl() {
+    let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(mailToUrl)}`;
+    if (alias !== '') {
+      getRequest = getRequest.concat(`&alias=${alias}`);
+    }
+    fetch(getRequest)
+        .then((response: Response) => {
+          return response.text();
+        })
+        .then((response: String) => {
+          console.log(response);
+        });
   }
 
   return (
@@ -145,8 +163,18 @@ export default function App() {
                       bcc: bcc,
                       body: body,
                       mailToUrl: mailToUrl,
-                      handleBackToEdit: handleBackToEdit,
+                      handleBackToEdit: handleGenerateTinyUrl,
                     })}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <p>{mailToUrl}</p>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <p>{encodeURIComponent(mailToUrl)}</p>
                   </Col>
                 </Row>
               </Card.Body>
