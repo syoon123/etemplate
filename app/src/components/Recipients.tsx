@@ -3,7 +3,7 @@ import { RecipientsCallback } from '../App';
 import Form from 'react-bootstrap/Form';
 import Badge from 'react-bootstrap/Badge';
 
-export type RecipientsProps = {
+type RecipientsProps = {
   label: string;
   action: RecipientsCallback;
   items: string[];

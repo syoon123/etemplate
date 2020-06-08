@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import Container from 'react-bootstrap/Container';
 import Recipients from './components/Recipients';
+import CustomButton from './components/CustomButton';
 import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -13,6 +14,10 @@ export type RecipientsCallback = {
 
 export type ContentCallback = {
   (text: string): void;
+};
+
+export type CustomButtonCallback = {
+  (): void;
 };
 
 export default function App() {
@@ -41,6 +46,10 @@ export default function App() {
 
   function handleContent(text: string) {
     setContent(text);
+  }
+
+  function handleGenerateUrl() {
+    console.log('hey');
   }
 
   return (
@@ -88,11 +97,21 @@ export default function App() {
                 })}
                 {Content({
                   label: 'Body:',
-                  action: handleSubject,
+                  action: handleContent,
                   placeholder: 'Enter email body',
                   isLongText: true,
                   isHidden: false,
                 })}
+                <Row className="justify-content-md-center">
+                  <Col lg={4}>
+                    {CustomButton({
+                      label: 'Generate URL',
+                      action: handleGenerateUrl,
+                      class: 'btn-dark btn-block',
+                      isHidden: false,
+                    })}
+                  </Col>
+                </Row>
               </Card.Body>
             </Card>
           </Col>
