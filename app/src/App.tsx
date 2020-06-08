@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Recipients from './components/Recipients';
 import CustomButton from './components/CustomButton';
 import TemplatePreview from './components/TemplatePreview';
+import TemplateEdit from './components/TemplateEdit';
 import Content from './components/Content';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -114,79 +115,31 @@ export default function App() {
                 <h2 className="break-word mb-3">
                   {subject ? subject : '[No Subject]'}
                 </h2>
-                {Recipients({
-                  label: 'To:',
-                  action: handleRecipients,
-                  items: recipients,
-                  existingItems: cc.concat(bcc),
+                {TemplateEdit({
                   isHidden: !isEditing,
+                  recipients: recipients,
+                  cc: cc,
+                  bcc: bcc,
+                  body: body,
+                  subject: subject,
+                  handleRecipients: handleRecipients,
+                  handleCc: handleCc,
+                  handleBcc: handleBcc,
+                  handleSubject: handleSubject,
+                  handleBody: handleBody,
+                  handleGenerateUrl: handleGenerateUrl,
                 })}
-                {Recipients({
-                  label: 'Cc:',
-                  action: handleCc,
-                  items: cc,
-                  existingItems: recipients.concat(bcc),
-                  isHidden: !isEditing,
+                {TemplatePreview({
+                  isHidden: isEditing,
+                  recipients: recipients,
+                  cc: cc,
+                  bcc: bcc,
+                  body: body,
+                  mailToUrl: mailToUrl,
+                  alias: alias,
+                  handleBackToEdit: handleBackToEdit,
+                  handleAlias: handleAlias,
                 })}
-                {Recipients({
-                  label: 'Bcc:',
-                  action: handleBcc,
-                  items: bcc,
-                  existingItems: recipients.concat(cc),
-                  isHidden: !isEditing,
-                })}
-                {Content({
-                  label: 'Subject:',
-                  action: handleSubject,
-                  placeholder: 'Type/paste subject line',
-                  isLongText: false,
-                  isHidden: !isEditing,
-                  helperText: '',
-                })}
-                {Content({
-                  label: 'Body:',
-                  action: handleBody,
-                  placeholder: 'Type/paste email body',
-                  isLongText: true,
-                  isHidden: !isEditing,
-                  helperText: '',
-                })}
-                <Row className="justify-content-md-center">
-                  <Col lg={4}>
-                    {CustomButton({
-                      label: 'Next',
-                      action: handleGenerateUrl,
-                      secondary: false,
-                      isHidden: !isEditing,
-                      className: '',
-                    })}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    {TemplatePreview({
-                      isHidden: isEditing,
-                      recipients: recipients,
-                      cc: cc,
-                      bcc: bcc,
-                      body: body,
-                      mailToUrl: mailToUrl,
-                      alias: alias,
-                      handleBackToEdit: handleBackToEdit,
-                      handleAlias: handleAlias,
-                    })}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <p>{mailToUrl}</p>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <p>{encodeURIComponent(mailToUrl)}</p>
-                  </Col>
-                </Row>
               </Card.Body>
             </Card>
           </Col>

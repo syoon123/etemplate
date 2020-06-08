@@ -8,6 +8,7 @@ type ContentProps = {
   action: ContentCallback;
   isLongText: boolean;
   isHidden: boolean;
+  value: string;
   helperText: string;
 };
 
@@ -33,6 +34,7 @@ export default function Content(props: ContentProps) {
       <Form.Control
         className="input"
         placeholder={props.placeholder}
+        value={props.value}
         onChange={handleChange}
       />
     );

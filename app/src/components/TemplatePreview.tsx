@@ -49,6 +49,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         placeholder: 'ex. my-special-alias',
         action: props.handleAlias,
         isLongText: false,
+        value: props.alias,
         isHidden: props.isHidden,
         helperText: props.alias,
       })}
