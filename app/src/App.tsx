@@ -67,10 +67,7 @@ export default function App() {
     if (subject !== "") {
        subjectString = encodeURIComponent(`&subject=${subject}`);
     }
-    let bodyString: string = ""
-    if (body !== "") {
-      bodyString = encodeURIComponent(`&body=${body}`);
-    }
+    let bodyString: string = encodeURIComponent(`&body=${body}`);
     setMailToUrl(`mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`);
   }
 
