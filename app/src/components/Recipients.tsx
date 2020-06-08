@@ -9,14 +9,11 @@ type RecipientsProps = {
   items: string[];
   existingItems: string[];
   isHidden: boolean;
-  atLeastOneNeeded: boolean;
 };
 
 export default function Recipients(props: RecipientsProps) {
   const [value, setValue] = React.useState<string>('');
-  const [error, setError] = React.useState<string>(
-    props.atLeastOneNeeded ? 'You need at least one recipient' : ''
-  );
+  const [error, setError] = React.useState<string>('');
   const validEmail = new RegExp(/[\w\d.-]+@[\w\d.-]+\.[\w\d.-]+/g);
   if (props.isHidden) {
     return;

@@ -74,7 +74,6 @@ export default function App() {
                   items: recipients,
                   existingItems: cc.concat(bcc),
                   isHidden: !isEditing,
-                  atLeastOneNeeded: true,
                 })}
                 {Recipients({
                   label: 'Cc:',
@@ -82,7 +81,6 @@ export default function App() {
                   items: cc,
                   existingItems: recipients.concat(bcc),
                   isHidden: !isEditing,
-                  atLeastOneNeeded: false,
                 })}
                 {Recipients({
                   label: 'Bcc:',
@@ -90,7 +88,6 @@ export default function App() {
                   items: bcc,
                   existingItems: recipients.concat(cc),
                   isHidden: !isEditing,
-                  atLeastOneNeeded: false,
                 })}
                 {Content({
                   label: 'Subject:',
