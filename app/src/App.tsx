@@ -28,21 +28,17 @@ export default function App() {
   const [content, setContent] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
-  const [errors, setErrors] = React.useState<boolean>(true);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleCc(items: string[]) {
     setCc(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleBcc(items: string[]) {
     setBcc(items);
-    setErrors(!items.concat(cc).concat(bcc));
   }
 
   function handleSubject(text: string) {
@@ -62,7 +58,7 @@ export default function App() {
       <Container className="p-3">
         <Row className="justify-content-md-center">
           <Col sm={8}>
-            <h1 className="text-center mb-3">Email Template Link Generator</h1>
+            <h1 className="text-center mb-3">eTemplate</h1>
           </Col>
         </Row>
         <Row className="justify-content-md-center">
@@ -114,7 +110,7 @@ export default function App() {
                       action: handleGenerateUrl,
                       class: 'btn-dark btn-block',
                       isHidden: !isEditing,
-                      isDisabled: errors,
+                      isDisabled: !recipients.concat(cc).concat(bcc),
                     })}
                   </Col>
                 </Row>
