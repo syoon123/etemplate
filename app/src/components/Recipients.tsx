@@ -19,7 +19,7 @@ export default function Recipients(props: RecipientsProps) {
     return;
   }
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
-    if (['Enter', 'Tab', ','].includes(evt.key)) {
+    if (['Enter', 'Tab', ',', ' '].includes(evt.key)) {
       evt.preventDefault();
 
       setValue(value.trim());
@@ -102,7 +102,7 @@ export default function Recipients(props: RecipientsProps) {
       <Form.Control
         className={'input ' + (error && ' is-invalid')}
         value={value}
-        placeholder="Type or paste email addresses and press `Enter`..."
+        placeholder="Type/paste email addresses"
         onKeyDown={handleKeyDown}
         onChange={handleChange}
         onPaste={handlePaste}
