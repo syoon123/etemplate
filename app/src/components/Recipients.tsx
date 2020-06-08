@@ -18,6 +18,16 @@ export default function Recipients(props: RecipientsProps) {
   if (props.isHidden) {
     return;
   }
+
+  const handleBlur = (evt: React.FocusEvent) => {
+    setValue(value.trim());
+
+    if (value && isValid(value)) {
+      setValue('');
+      props.action([...props.items, value]);
+    }
+  };
+
   const handleKeyDown = (evt: React.KeyboardEvent<HTMLInputElement>) => {
     if (['Enter', ',', ' '].includes(evt.key)) {
       evt.preventDefault();
@@ -105,6 +115,7 @@ export default function Recipients(props: RecipientsProps) {
         placeholder="Type or paste email addresses"
         onKeyDown={handleKeyDown}
         onChange={handleChange}
+        onBlur={handleBlur}
         onPaste={handlePaste}
       />
       <Form.Text className="text-muted">
