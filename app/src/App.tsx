@@ -27,6 +27,7 @@ export default function App() {
   const [subject, setSubject] = React.useState<string>('');
   const [content, setContent] = React.useState<string>('');
   const [mailToUrl, setMailToUrl] = React.useState<string>('');
+  const [isEditing, setIsEditing] = React.useState<boolean>(true);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
@@ -91,14 +92,14 @@ export default function App() {
                 {Content({
                   label: 'Subject:',
                   action: handleSubject,
-                  placeholder: 'Enter subject line',
+                  placeholder: 'Type/paste subject line',
                   isLongText: false,
                   isHidden: false,
                 })}
                 {Content({
                   label: 'Body:',
                   action: handleContent,
-                  placeholder: 'Enter email body',
+                  placeholder: 'Type/paste email body',
                   isLongText: true,
                   isHidden: false,
                 })}
