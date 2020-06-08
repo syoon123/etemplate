@@ -135,7 +135,7 @@ export default function App() {
               >
                 tinyurl.com/emailforfloyd
               </a>
-              ,&nbsp;
+              ,{' '}
               <a
                 href="https://defund12.org"
                 target="_blank"
@@ -143,10 +143,18 @@ export default function App() {
               >
                 defund12.org
               </a>
-              , and other examples of activists using technology to allow people
-              to contact government officials at the click of a link, we've
-              built a tool to make this kind of templating as simple as
-              possible!
+              , and{' '}
+              <a
+                href="https://sayitagain.carrd.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                other examples
+              </a>{' '}
+              of activists using technology to allow people to contact
+              institutions and government officials at the click of a link,
+              we've built a tool to make this kind of email templating as simple
+              as possible!
             </p>
           </Col>
         </Row>
