@@ -70,7 +70,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
         errorMessage: '',
       })}
       <Row className="justify-content-md-center">
-        <Col lg={4}>
+        <Col md={4}>
           {CustomButton({
             label: 'Next',
             action: props.handleGenerateUrl,

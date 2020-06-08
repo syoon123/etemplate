@@ -26,7 +26,7 @@ export default function GeneratedUrl(props: GeneratedUrlProps) {
         </Col>
       </Row>
       <Row className="justify-content-md-center mt-0 mb-3">
-        <Col sm={4}>
+        <Col md={4}>
           {CustomButton({
             label: 'Copy to Clipboard',
             variant: 'link',
@@ -39,7 +39,7 @@ export default function GeneratedUrl(props: GeneratedUrlProps) {
         </Col>
       </Row>
       <Row className="justify-content-md-center mt-4">
-        <Col lg={4}>
+        <Col md={4}>
           {CustomButton({
             label: 'New Template',
             variant: 'danger',

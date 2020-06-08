@@ -58,7 +58,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
           : 'Invalid or unavailable alias. Please try again.',
       })}
       <Row className="justify-content-md-center">
-        <Col sm={4}>
+        <Col md={4}>
           {CustomButton({
             label: 'Back to Edit',
             variant: 'secondary',
@@ -66,7 +66,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
             action: props.handleBackToEdit,
           })}
         </Col>
-        <Col sm={4}>
+        <Col md={4}>
           {CustomButton({
             label: 'Make URL',
             variant: 'primary',
