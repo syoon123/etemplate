@@ -31,7 +31,6 @@ export default function App() {
   const [alias, setAlias] = React.useState<string>('');
   const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
-  const [linkCopied, setLinkCopied] = React.useState<boolean>(false);
 
   function handleRecipients(items: string[]) {
     setRecipients(items);
