@@ -121,7 +121,7 @@ export default function App() {
       <Container className="p-3">
         <Row className="justify-content-md-center">
           <Col lg={8}>
-            <h1 className="text-center mb-3">eTemplate</h1>
+            <h1 className="text-center mb-3">e-Template</h1>
           </Col>
         </Row>
         <Row className="justify-content-md-center mb-0">
