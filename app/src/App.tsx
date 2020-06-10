@@ -154,7 +154,7 @@ export default function App() {
             </p>
           </Col>
         </Row>
-        <Row className="justify-content-md-center mb-0">
+        <Row className="justify-content-md-center">
           <Col lg={8}>
             <p className="text-center">
               <a
