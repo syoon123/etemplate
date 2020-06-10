@@ -156,7 +156,7 @@ export default function App() {
         </Row>
         <Row className="justify-content-md-center">
           <Col lg={8}>
-            <p className="text-center">
+            <p className="text-center mb-3">
               <a
                 href="https://st234pa.github.io/representative-emails"
                 target="_blank"
