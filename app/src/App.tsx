@@ -126,7 +126,7 @@ export default function App() {
         </Row>
         <Row className="justify-content-md-center mb-0">
           <Col lg={8}>
-            <p className="text-center mb-0">
+            <p className="text-center">
               Thanks to resources like{' '}
               <a
                 href="https://defund12.org"
@@ -149,12 +149,21 @@ export default function App() {
               of technology, we've built a tool to make this kind of email
               templating as simple and accessible as possible.
             </p>
-          </Col>
-        </Row>
-        <Row className="justify-content-md-center">
-          <Col lg={8}>
             <p className="text-center mb-3">
               <small>&mdash; Sarah and Stephanie Yoon</small>
+            </p>
+          </Col>
+        </Row>
+        <Row className="justify-content-md-center mb-0">
+          <Col lg={8}>
+            <p className="text-center">
+              <a
+                href="https://st234pa.github.io/representative-emails"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Need to find your representatives' emails?
+              </a>
             </p>
           </Col>
         </Row>
