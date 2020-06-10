@@ -50,7 +50,8 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         action: props.handleAlias,
         isLongText: false,
         value: props.alias,
-        helperText: props.alias ? `tinyurl.com/${props.alias}` : '',
+        helperText:
+          'tinyurl.com/' + (props.alias ? props.alias : 'my-special-alias'),
         errorMessage: props.aliasValid
           ? ''
           : 'Invalid or unavailable alias. Please try again.',

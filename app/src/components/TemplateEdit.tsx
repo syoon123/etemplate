@@ -60,7 +60,8 @@ export default function TemplateEdit(props: TemplateEditProps) {
       {Content({
         label: 'Body:',
         action: props.handleBody,
-        placeholder: 'Type or paste email body',
+        placeholder:
+          'Type or paste email body (for security reasons, the email body needs to be plain text)',
         isLongText: true,
         value: props.body,
         isHidden: props.isHidden,
