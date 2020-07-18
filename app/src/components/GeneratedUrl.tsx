@@ -19,7 +19,12 @@ export default function GeneratedUrl(props: GeneratedUrlProps) {
           <Row>
             <Col className="mt-3 mb-0">
               <p className="center mb-0">
-                <a className="mb-0 tiny-url" href={props.tinyUrl}>
+                <a
+                  className="mb-0 tiny-url"
+                  href={props.tinyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {props.tinyUrl}
                 </a>
               </p>
