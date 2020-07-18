@@ -45,7 +45,7 @@ export default function GeneratedUrl(props: GeneratedUrlProps) {
           })}
         </Col>
       </Row>
-      <Row className="justify-content-md-center mt-4">
+      <Row className="justify-content-md-center mt-4 mb-3">
         <Col md={4}>
           {CustomButton({
             label: 'New Template',
