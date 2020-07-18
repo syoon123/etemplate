@@ -63,7 +63,7 @@ export default function App() {
     let bodyString: string = `&body=${encodeURIComponent(body)}`;
     if (filterKiller) {
       setFullUrl(
-        `https://st234pa.github.io/filter-killer?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
+        `http://localhost:3000/filter-killer?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
       );
     } else {
       setFullUrl(
