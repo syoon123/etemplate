@@ -26,30 +26,15 @@ export default function App() {
   const [bcc, setBcc] = React.useState<string[]>([]);
   const [subject, setSubject] = React.useState<string>('');
   const [body, setBody] = React.useState<string>('');
-  const [mailToUrl, setMailToUrl] = React.useState<string>('');
+  const [fullUrl, setFullUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
+  const [filterKiller, setFilterKiller] = React.useState<boolean>(true);
   const [alias, setAlias] = React.useState<string>('');
   const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
 
-  function handleRecipients(items: string[]) {
-    setRecipients(items);
-  }
-
-  function handleCc(items: string[]) {
-    setCc(items);
-  }
-
-  function handleBcc(items: string[]) {
-    setBcc(items);
-  }
-
-  function handleSubject(text: string) {
-    setSubject(text);
-  }
-
-  function handleBody(text: string) {
-    setBody(text);
+  function handleToggleFilterKiller() {
+    setFilterKiller(!filterKiller);
   }
 
   function handleBackToEdit() {
@@ -76,15 +61,21 @@ export default function App() {
       subjectString = `&subject=${encodeURIComponent(subject)}`;
     }
     let bodyString: string = `&body=${encodeURIComponent(body)}`;
-    setMailToUrl(
-      `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
-    );
+    if (filterKiller) {
+      setFullUrl(
+        `https://st234pa.github.io/filter-killer?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
+      );
+    } else {
+      setFullUrl(
+        `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
+      );
+    }
     setIsEditing(false);
   }
 
   function handleGenerateTinyUrl() {
     let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
-      mailToUrl
+      fullUrl
     )}`;
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
@@ -181,11 +172,11 @@ export default function App() {
                   bcc: bcc,
                   body: body,
                   subject: subject,
-                  handleRecipients: handleRecipients,
-                  handleCc: handleCc,
-                  handleBcc: handleBcc,
-                  handleSubject: handleSubject,
-                  handleBody: handleBody,
+                  handleRecipients: setRecipients,
+                  handleCc: setCc,
+                  handleBcc: setBcc,
+                  handleSubject: setSubject,
+                  handleBody: setBody,
                   handleGenerateUrl: handleGenerateUrl,
                 })}
                 {TemplatePreview({
@@ -194,9 +185,10 @@ export default function App() {
                   cc: cc,
                   bcc: bcc,
                   body: body,
-                  mailToUrl: mailToUrl,
                   alias: alias,
                   aliasValid: aliasValid,
+                  filterKiller: filterKiller,
+                  toggleFilterKiller: handleToggleFilterKiller,
                   handleBackToEdit: handleBackToEdit,
                   handleGenerateTinyUrl: handleGenerateTinyUrl,
                   handleAlias: handleAlias,

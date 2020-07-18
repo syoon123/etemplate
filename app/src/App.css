@@ -45,3 +45,8 @@
 .preview-body {
   white-space: pre-wrap;
 }
+
+.helper-text {
+  color: #6c757d;
+  font-size: small;
+}
