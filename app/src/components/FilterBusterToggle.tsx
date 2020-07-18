@@ -23,8 +23,8 @@ function FilterBusterToggle(props: FilterBusterToggleProps) {
             />
             <Form.Text className="text-muted">
               When Filter Buster is on, the generated link will direct users to
-              Filter Buster, which will add randomized characters to each word
-              in the subject and body, thereby bypassing email filters!
+              Filter Buster, which will insert a randomized character into each
+              word of the subject and body to bypass email filters!
             </Form.Text>
           </Form.Group>
         </Form>

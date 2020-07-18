@@ -34,7 +34,7 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
         noRecipients: '[none]',
       })}
       {RecipientsPreview({
-        label: 'Ccc',
+        label: 'Cc',
         recipients: props.cc,
         noRecipients: '[none]',
       })}
