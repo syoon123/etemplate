@@ -28,13 +28,13 @@ export default function App() {
   const [body, setBody] = React.useState<string>('');
   const [fullUrl, setFullUrl] = React.useState<string>('');
   const [isEditing, setIsEditing] = React.useState<boolean>(true);
-  const [filterKiller, setFilterKiller] = React.useState<boolean>(true);
+  const [filterBuster, setFilterBuster] = React.useState<boolean>(true);
   const [alias, setAlias] = React.useState<string>('');
   const [aliasValid, setAliasValid] = React.useState<boolean>(true);
   const [tinyUrl, setTinyUrl] = React.useState<string>('');
 
-  function handleToggleFilterKiller() {
-    setFilterKiller(!filterKiller);
+  function handleToggleFilterBuster() {
+    setFilterBuster(!filterBuster);
   }
 
   function handleBackToEdit() {
@@ -61,9 +61,9 @@ export default function App() {
       subjectString = `&subject=${encodeURIComponent(subject)}`;
     }
     let bodyString: string = `&body=${encodeURIComponent(body)}`;
-    if (filterKiller) {
+    if (filterBuster) {
       setFullUrl(
-        `http://localhost:3000/filter-killer?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
+        `http://localhost:3000/filter-Buster?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
       );
     } else {
       setFullUrl(
@@ -161,7 +161,7 @@ export default function App() {
         <Row className="justify-content-md-center">
           <Col lg={8}>
             <Card>
-              <Card.Body>
+              <Card.Body className="pb-0">
                 <h2 className="break-word mb-4">
                   {subject ? subject : '[No Subject]'}
                 </h2>
@@ -187,8 +187,8 @@ export default function App() {
                   body: body,
                   alias: alias,
                   aliasValid: aliasValid,
-                  filterKiller: filterKiller,
-                  toggleFilterKiller: handleToggleFilterKiller,
+                  filterBuster: filterBuster,
+                  toggleFilterBuster: handleToggleFilterBuster,
                   handleBackToEdit: handleBackToEdit,
                   handleGenerateTinyUrl: handleGenerateTinyUrl,
                   handleAlias: handleAlias,

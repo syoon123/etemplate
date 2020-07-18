@@ -67,7 +67,7 @@ export default function TemplateEdit(props: TemplateEditProps) {
         value: props.body,
         isHidden: props.isHidden,
       })}
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-md-center pt-3">
         <Col md={4}>
           {CustomButton({
             label: 'Next',

@@ -4,7 +4,7 @@ import CustomButton from './CustomButton';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Content from './Content';
-import FilterKillerToggle from './FilterKillerToggle';
+import FilterBusterToggle from './FilterBusterToggle';
 import { CustomButtonCallback, ContentCallback } from '../App';
 
 type TemplatePreviewProps = {
@@ -13,8 +13,8 @@ type TemplatePreviewProps = {
   cc: string[];
   bcc: string[];
   body: string;
-  filterKiller: boolean;
-  toggleFilterKiller: CustomButtonCallback;
+  filterBuster: boolean;
+  toggleFilterBuster: CustomButtonCallback;
   alias: string;
   aliasValid: boolean;
   handleBackToEdit: CustomButtonCallback;
@@ -58,23 +58,10 @@ export default function TemplatePreview(props: TemplatePreviewProps) {
           ? ''
           : 'Invalid or unavailable alias. Please try again.',
       })}
-      <Row>
-        <Col>
-          {FilterKillerToggle({
-            checked: props.filterKiller,
-            onChange: props.toggleFilterKiller,
-          })}
-        </Col>
-      </Row>
-      <Row className="mb-3">
-        <Col>
-          <p className="helper-text">
-            When Filter Killer is on, the generated link will direct users to
-            Filter Killer, which will add randomized characters to each word in
-            the subject and body, thereby avoiding email filters!
-          </p>
-        </Col>
-      </Row>
+      {FilterBusterToggle({
+        checked: props.filterBuster,
+        onChange: props.toggleFilterBuster,
+      })}
       <Row className="justify-content-md-center">
         <Col md={4}>
           {CustomButton({
