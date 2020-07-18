@@ -52,20 +52,20 @@ export default function TemplateEdit(props: TemplateEditProps) {
       {Content({
         label: 'Subject:',
         action: props.handleSubject,
-        placeholder:
-          'Type or paste subject line (for security reasons, content needs to be plain text)',
+        placeholder: 'Type or paste subject line',
         value: props.subject,
         isLongText: false,
         isHidden: props.isHidden,
+        helperText: 'For security reasons, content needs to be plain text.',
       })}
       {Content({
         label: 'Body:',
         action: props.handleBody,
-        placeholder:
-          'Type or paste email body (for security reasons, content needs to be plain text)',
+        placeholder: 'Type or paste email body',
         isLongText: true,
         value: props.body,
         isHidden: props.isHidden,
+        helperText: 'For security reasons, content needs to be plain text.',
       })}
       <Row className="justify-content-md-center pt-3">
         <Col md={4}>
