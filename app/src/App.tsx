@@ -39,6 +39,7 @@ export default function App() {
 
   function handleBackToEdit() {
     setTinyUrl('');
+    window.scrollTo(0, 0);
     setIsEditing(true);
   }
 
@@ -70,6 +71,7 @@ export default function App() {
         `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
       );
     }
+    window.scrollTo(0, 0);
     setIsEditing(false);
   }
 
