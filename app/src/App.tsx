@@ -63,7 +63,7 @@ export default function App() {
     let bodyString: string = `&body=${encodeURIComponent(body)}`;
     if (filterBuster) {
       setFullUrl(
-        `http://localhost:3000/filter-Buster?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
+        `https://st234pa.github.io/filter-Buster?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
       );
     } else {
       setFullUrl(
