@@ -48,6 +48,12 @@ export default function App() {
   }
 
   function handleGenerateUrl() {
+    window.scrollTo(0, 0);
+    setIsEditing(false);
+  }
+
+  function generateUrl() {
+    let ret = "";
     let recipientsList: string = encodeURIComponent(recipients.join());
     let ccList: string = cc.join();
     if (ccList !== '') {
@@ -63,21 +69,20 @@ export default function App() {
     }
     let bodyString: string = `&body=${encodeURIComponent(body)}`;
     if (filterBuster) {
-      setFullUrl(
+      ret = 
         `https://st234pa.github.io/filter-buster/?to=${recipientsList}&${ccList}${bccList}${subjectString}${bodyString}`
-      );
+      ;
     } else {
-      setFullUrl(
+      ret =
         `mailto:${recipientsList}?${ccList}${bccList}${subjectString}${bodyString}`
-      );
+      ;
     }
-    window.scrollTo(0, 0);
-    setIsEditing(false);
+    return ret;
   }
 
   function handleGenerateTinyUrl() {
     let getRequest: string = `https://tinyurl.com/api-create.php?url=${encodeURIComponent(
-      fullUrl
+      generateUrl()
     )}`;
     if (alias !== '') {
       getRequest = getRequest.concat(`&alias=${alias}`);
